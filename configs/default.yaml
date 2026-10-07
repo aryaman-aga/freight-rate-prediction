@@ -1,0 +1,52 @@
+# Freight Rate Prediction - Default Configuration
+
+split:
+  n_splits: 4
+  test_months: 1
+  gap_days: 0
+  first_train_end_month: 6
+
+features:
+  target_encoding_smoothing: 10.0
+  target_encoding_min_samples: 5
+  te_columns:
+    - pickup
+    - delivery
+    - lane
+    - equipment
+    - pickup_region
+    - delivery_region
+  cyclical_features:
+    month: 12
+    dow: 7
+
+models:
+  random_state: 42
+  n_jobs: -1
+  lgbm_params:
+    objective: regression
+    metric: mape
+    boosting_type: gbdt
+    learning_rate: 0.03
+    num_leaves: 255
+    min_child_samples: 50
+    subsample: 0.8
+    colsample_bytree: 0.8
+    reg_alpha: 0.1
+    reg_lambda: 0.1
+    verbose: -1
+    force_col_wise: true
+  xgb_params:
+    objective: reg:squarederror
+    eval_metric: mape
+    learning_rate: 0.03
+    max_depth: 8
+    min_child_weight: 10
+    subsample: 0.8
+    colsample_bytree: 0.8
+    reg_alpha: 0.1
+    reg_lambda: 0.1
+    tree_method: hist
+    verbosity: 0
+  optuna_n_trials: 30
+  optuna_timeout: 1800

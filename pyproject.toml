@@ -1,0 +1,47 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "freight-rate"
+version = "0.1.0"
+description = "Freight Rate Prediction Challenge Solution"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "pandas==3.0.6",
+    "numpy==2.5.3",
+    "scikit-learn==1.9.1",
+    "lightgbm==4.7.0",
+    "xgboost==3.4.1",
+    "optuna==5.0.0",
+    "matplotlib==3.11.2",
+    "shap==0.46.0",
+    "pytest==9.1.1",
+    "ruff==0.16.10",
+    "joblib==1.6.0",
+    "scipy==1.18.1",
+    "pyyaml==6.0.1",
+]
+
+[project.optional-dependencies]
+dev = [
+    "jupyterlab",
+    "seaborn",
+]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+include = ["freight_rate*"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+select = ["E", "F", "I", "W", "UP", "B", "C4", "SIM"]
+ignore = ["E501", "B008"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py"]
+python_functions = ["test_*"]
+addopts = "-v --tb=short"

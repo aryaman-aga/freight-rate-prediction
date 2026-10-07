@@ -1,0 +1,30 @@
+# Environment
+.venv/
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Data & artifacts
+scorer_results/
+*.png
+*.pkl
+*.joblib
+models/
+mlruns/
+.wandb/
+output/
+*.egg-info/
+
+# IDE / OS
+.vscode/
+.idea/
+.DS_Store
+
+# Lint / test caches
+.ruff_cache/
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Logs
+*.log
